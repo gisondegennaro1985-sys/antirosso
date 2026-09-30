@@ -1,0 +1,274 @@
+/* ==========================================
+   STILE GENERALE - DARK MODE iOS STYLE
+   ========================================== */
+:root {
+    --bg-primary: #000000;
+    --bg-card: #1c1c1e;
+    --bg-card-secondary: #2c2c2e;
+    --text-primary: #ffffff;
+    --text-secondary: #8e8e93;
+    --accent-green: #30d158;
+    --accent-blue: #0a84ff;
+    --accent-orange: #ff9f0a;
+    --accent-red: #ff453a;
+    --border-color: #38383a;
+    --radius-large: 20px;
+    --radius-medium: 12px;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    padding: calc(env(safe-area-inset-top) + 15px) 16px calc(env(safe-area-inset-bottom) + 30px) 16px;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+/* Header */
+.app-header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.cycle-label {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.app-title {
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin-top: 2px;
+}
+
+/* App Container */
+.app-container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+/* Cards */
+.card {
+    background-color: var(--bg-card);
+    border-radius: var(--radius-large);
+    padding: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.card-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.card-subtitle {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--text-secondary);
+    letter-spacing: 1px;
+}
+
+.card-description {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    margin-bottom: 15px;
+}
+
+/* Hero Card (Budget Giorno) */
+.hero-card {
+    background: linear-gradient(145deg, #1c1c1e 0%, #252528 100%);
+    text-align: center;
+    border: 1px solid var(--border-color);
+}
+
+.main-budget {
+    font-size: 2.8rem;
+    font-weight: 800;
+    color: var(--accent-green);
+    margin: 8px 0;
+    letter-spacing: -1px;
+}
+
+.budget-status {
+    display: inline-block;
+    padding: 4px 12px;
+    background-color: rgba(48, 209, 88, 0.15);
+    color: var(--accent-green);
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.progress-bar-container {
+    width: 100%;
+    height: 8px;
+    background-color: var(--bg-card-secondary);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+.progress-bar {
+    height: 100%;
+    width: 0%;
+    background-color: var(--accent-green);
+    transition: width 0.3s ease;
+}
+
+/* Inputs & Forms */
+.quick-add, .installment-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+input[type="number"], input[type="text"] {
+    width: 100%;
+    background-color: var(--bg-card-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-medium);
+    padding: 12px 16px;
+    color: var(--text-primary);
+    font-size: 1rem;
+    outline: none;
+}
+
+input::placeholder {
+    color: var(--text-secondary);
+}
+
+input:focus {
+    border-color: var(--accent-blue);
+}
+
+/* Buttons */
+.btn {
+    width: 100%;
+    padding: 14px;
+    border-radius: var(--radius-medium);
+    border: none;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+
+.btn:active {
+    opacity: 0.8;
+}
+
+.btn-primary {
+    background-color: var(--accent-blue);
+    color: #ffffff;
+}
+
+.btn-secondary {
+    background-color: var(--accent-orange);
+    color: #ffffff;
+}
+
+.btn-outline {
+    background-color: transparent;
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
+}
+
+/* Stats Grid */
+.stats-grid {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.stat-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.stat-label {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+
+.stat-value {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-top: 4px;
+}
+
+/* Salvadanaio Card */
+.piggy-card {
+    background: linear-gradient(145deg, #2c2115 0%, #1c1c1e 100%);
+    border: 1px solid rgba(255, 159, 10, 0.2);
+}
+
+.piggy-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.piggy-icon {
+    font-size: 1.5rem;
+}
+
+.piggy-balance {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--accent-orange);
+    margin: 8px 0;
+}
+
+.piggy-note {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    line-height: 1.4;
+}
+
+/* Lists */
+.expense-list, .active-installments-list {
+    list-style: none;
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.expense-item, .installment-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--bg-card-secondary);
+    padding: 10px 14px;
+    border-radius: var(--radius-medium);
+    font-size: 0.9rem;
+}
+
+.expense-amount {
+    font-weight: 700;
+    color: var(--accent-red);
+}
+
+.setting-row {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 12px;
+}
+
+.setting-row label {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
