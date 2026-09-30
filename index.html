@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>Gestione Budget Mensile</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+</head>
+<body>
+
+    <!-- Header App -->
+    <header class="app-header">
+        <span class="cycle-label" id="cycleDateLabel">Ciclo: -- / --</span>
+        <h1 class="app-title">Il Tuo Budget</h1>
+    </header>
+
+    <main class="app-container">
+
+        <!-- SCHEDA 1: Dashboard Principale (Budget del Giorno) -->
+        <section class="card hero-card">
+            <span class="card-subtitle">DISPONIBILE OGGI</span>
+            <div class="main-budget" id="dailyBudgetDisplay">€ 0,00</div>
+            <div class="budget-status" id="budgetStatusBadge">In target</div>
+
+            <div class="progress-bar-container">
+                <div class="progress-bar" id="dailyProgressBar"></div>
+            </div>
+
+            <!-- Inserimento Rapido Spesa -->
+            <div class="quick-add">
+                <input type="number" id="expenseAmount" placeholder="€ Importo" step="0.01" inputmode="decimal">
+                <input type="text" id="expenseNote" placeholder="Descrizione (opzionale)">
+                <button id="addExpenseBtn" class="btn btn-primary">Aggiungi Spesa</button>
+            </div>
+        </section>
+
+        <!-- RIEPILOGO MENSILE RAPIDO -->
+        <section class="card">
+            <h2 class="card-title">Riepilogo Fondo Mensile</h2>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <span class="stat-label">Fondo Rimanente</span>
+                    <span class="stat-value" id="monthlyFundDisplay">€ 0,00</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Giorni al Reset</span>
+                    <span class="stat-value" id="daysLeftDisplay">--</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- SCHEDA 2: Rate Attive (PayPal 3x) & Simulatore -->
+        <section class="card">
+            <h2 class="card-title">Rate & Spese Impegnative</h2>
+            <p class="card-description">Dividi una spesa in 3 rate (1ª oggi, le altre sui prossimi 2 cicli).</p>
+            
+            <div class="installment-form">
+                <input type="number" id="installmentTotal" placeholder="Importo Totale Spesa €" step="0.01" inputmode="decimal">
+                <input type="text" id="installmentDesc" placeholder="Oggetto / Negozio">
+                <button id="add3xBtn" class="btn btn-secondary">Aggiungi Pagamento 3 Rate</button>
+            </div>
+
+            <div class="active-installments-list" id="installmentsContainer">
+                <!-- Le rate attive compariranno qui via JS -->
+            </div>
+        </section>
+
+        <!-- SCHEDA 3: Salvadanaio (Regola 50/50) -->
+        <section class="card piggy-card">
+            <div class="piggy-header">
+                <h2 class="card-title">Salvadanaio Smart (50/50)</h2>
+                <span class="piggy-icon">🐷</span>
+            </div>
+            <div class="piggy-balance" id="piggyBankDisplay">€ 0,00</div>
+            <p class="piggy-note">Ogni notte, il 50% del surplus non speso va qui, mentre l'altro 50% aumenta il tuo fondo mensile!</p>
+        </section>
+
+        <!-- STORICO SPESE RECENTI -->
+        <section class="card">
+            <h2 class="card-title">Spese di Oggi</h2>
+            <ul class="expense-list" id="todayExpenseList">
+                <!-- Elenco spese odierne inserite via JS -->
+            </ul>
+        </section>
+
+        <!-- IMPOSTAZIONI & CONFIGURAZIONE CICLO -->
+        <section class="card settings-card">
+            <h2 class="card-title">Configurazione Ciclo</h2>
+            <div class="setting-row">
+                <label for="monthlySalaryInput">Stipendio / Budget Netto Ciclo (€):</label>
+                <input type="number" id="monthlySalaryInput" placeholder="es. 1500" step="0.01">
+            </div>
+            <button id="saveSettingsBtn" class="btn btn-outline">Salva / Resetta Ciclo al 23</button>
+        </section>
+
+    </main>
+
+    <script src="app.js"></script>
+    <script>
+        // Registrazione Service Worker per PWA
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('sw.js')
+                .then(reg => console.log('Service Worker registrato con successo:', reg))
+                .catch(err => console.error('Errore registrazione SW:', err));
+        }
+    </script>
+</body>
+</html>
