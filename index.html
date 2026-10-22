@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>Financial Brake</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="manifest" href="manifest.json">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+</head>
+<body>
+  <div class="app-container">
+    
+    <!-- HEADER CICLO -->
+    <header class="app-header">
+      <span class="cycle-dates" id="cycleDatesDisplay">CICLO: --/-- - --/--</span>
+      <h1>Il Tuo Budget</h1>
+    </header>
+
+    <!-- CARD DISPONIBILE OGGI -->
+    <section class="card main-card">
+      <div class="card-label">DISPONIBILE OGGI</div>
+      <div class="amount" id="todayBudgetDisplay">€ 0.00</div>
+      <div id="statusBadge" class="badge badge-target">In target</div>
+
+      <div class="input-group">
+        <input type="number" id="expenseAmount" placeholder="€ Importo" step="0.01" inputmode="decimal">
+        
+        <select id="expenseCategory">
+          <option value="🛒 Supermercato">🛒 Supermercato</option>
+          <option value="⛽ Carburante">⛽ Carburante</option>
+          <option value="☕ Bar / Ristoranti">☕ Bar / Ristoranti</option>
+          <option value="🏠 Casa / Utilità">🏠 Casa / Utilità</option>
+          <option value="🛍️ Altro / Svago" selected>🛍️ Altro / Svago</option>
+        </select>
+
+        <input type="text" id="expenseDesc" placeholder="Descrizione (opzionale)">
+        <button id="addExpenseBtn" class="btn btn-primary">Aggiungi Spesa</button>
+      </div>
+    </section>
+
+    <!-- RIEPILOGO FONDO MENSILE -->
+    <section class="card">
+      <h2>Riepilogo Fondo Mensile</h2>
+      <div class="grid-2">
+        <div>
+          <div class="sub-label">Fondo Rimanente</div>
+          <div class="sub-value" id="monthlyFundDisplay">€ 0.00</div>
+        </div>
+        <div>
+          <div class="sub-label">Giorni al Reset</div>
+          <div class="sub-value" id="daysToResetDisplay">--</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ANALISI SPESE PER CATEGORIA -->
+    <section class="card">
+      <h2>Analisi Spese Ciclo</h2>
+      <div id="categorySummaryList" class="category-summary-list">
+        <!-- Generato dinamicamente via JS -->
+      </div>
+    </section>
+
+    <!-- RATE & SPESE IMPEGNATIVE -->
+    <section class="card">
+      <h2>Rate & Spese Impegnative</h2>
+      <p class="card-desc">Dividi una spesa in 3 rate (1ª oggi, le altre sui prossimi 2 cicli).</p>
+      <div class="input-group">
+        <input type="number" id="installmentAmount" placeholder="Importo Totale Spesa €" step="0.01" inputmode="decimal">
+        <input type="text" id="installmentDesc" placeholder="Oggetto / Negozio">
+        <button id="addInstallmentBtn" class="btn btn-warning">Aggiungi Pagamento 3 Rate</button>
+      </div>
+    </section>
+
+    <!-- SALVADANAIO SMART -->
+    <section class="card card-piggy">
+      <div class="card-header-flex">
+        <h2>Salvadanaio Smart (50/50)</h2>
+        <span class="piggy-icon">🐷</span>
+      </div>
+      <div class="amount amount-piggy" id="savingsDisplay">€ 0.00</div>
+      <p class="card-desc">Ogni notte, il 50% del surplus non speso va qui, mentre l'altro 50% aumenta il tuo fondo mensile!</p>
+    </section>
+
+    <!-- SPESE DI OGGI -->
+    <section class="card">
+      <h2>Spese di Oggi</h2>
+      <ul id="todayExpensesList" class="expenses-list"></ul>
+    </section>
+
+    <!-- CONFIGURAZIONE CICLO -->
+    <section class="card">
+      <h2>Configurazione Ciclo</h2>
+      <div class="input-group">
+        <label for="monthlySalaryInput">Stipendio / Budget Netto Ciclo (€):</label>
+        <input type="number" id="monthlySalaryInput" placeholder="800" step="0.01">
+        <button id="saveSalaryBtn" class="btn btn-secondary">Salva Budget Base</button>
+      </div>
+    </section>
+
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
